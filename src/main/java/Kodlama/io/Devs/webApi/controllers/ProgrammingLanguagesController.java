@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
+import Kodlama.io.Devs.business.requests.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
 import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;
 
 @RestController
@@ -25,18 +27,18 @@ public class ProgrammingLanguagesController {
     }
 
     @GetMapping("/getAll")
-    public List<ProgrammingLanguage> getAll() {
+    public List<GetAllProgrammingLanguagesResponse> getAll() {
         return this.programmingLanguageService.getAll();
     }
 
     @GetMapping("/getbyid/{id}")
-    public ProgrammingLanguage getById(@PathVariable int id) {
+    public GetAllProgrammingLanguagesResponse getById(@PathVariable int id) throws Exception {
         return this.programmingLanguageService.getById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody ProgrammingLanguage programmingLanguage) throws Exception {
-        this.programmingLanguageService.add(programmingLanguage);
+    public void add(@RequestBody CreateProgrammingLanguageRequest createProgrammingLanguageRequest) throws Exception {
+        this.programmingLanguageService.add(createProgrammingLanguageRequest);
     }
 
     @PutMapping("/update")
@@ -44,9 +46,9 @@ public class ProgrammingLanguagesController {
         this.programmingLanguageService.update(programmingLanguage);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody ProgrammingLanguage programmingLanguage) {
-        this.programmingLanguageService.delete(programmingLanguage);
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable int id) throws Exception {
+        this.programmingLanguageService.delete(id);
     }
 
 }
