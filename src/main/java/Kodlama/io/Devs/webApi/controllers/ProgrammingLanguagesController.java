@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
-import Kodlama.io.Devs.business.requests.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.business.requests.programmingLanguage.CreateProgrammingLanguageRequest;
 import Kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
 import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;
 

@@ -1,4 +1,4 @@
-package Kodlama.io.Devs.business.requests;
+package Kodlama.io.Devs.business.requests.subTechnology;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateSubTechnologyRequestWithoutProgrammingLanguageName {
+public class UpdateSubTechnologyRequest {
     private int subTechnologyId;
     private String subTechnologyName;
     private int programmingLanguageId;

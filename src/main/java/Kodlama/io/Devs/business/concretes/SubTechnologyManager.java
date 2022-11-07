@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import Kodlama.io.Devs.business.abstracts.SubTechologyService;
-import Kodlama.io.Devs.business.requests.CreateSubTechnologyRequest;
-import Kodlama.io.Devs.business.requests.CreateSubTechnologyRequestWithoutProgrammingLanguageName;
+import Kodlama.io.Devs.business.requests.subTechnology.CreateSubTechnologyRequest;
+import Kodlama.io.Devs.business.requests.subTechnology.UpdateSubTechnologyRequest;
 import Kodlama.io.Devs.business.responses.GetAllSubTechnologyResponse;
 import Kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.dataAccess.abstracts.SubTechnologyRepository;
@@ -49,17 +49,17 @@ public class SubTechnologyManager implements SubTechologyService {
     }
 
     @Override
-    public void update(CreateSubTechnologyRequestWithoutProgrammingLanguageName subTechnologyRequestWithoutProgrammingLanguageName) throws Exception {
-        if (!isNameEmpty(subTechnologyRequestWithoutProgrammingLanguageName.getSubTechnologyName()) && 
-        !isNameRepeat(subTechnologyRequestWithoutProgrammingLanguageName.getSubTechnologyName()) && 
-        isExistSubTechnologyId(subTechnologyRequestWithoutProgrammingLanguageName.getSubTechnologyId()) && 
-        isExistProgrammingLanguageId(subTechnologyRequestWithoutProgrammingLanguageName.getProgrammingLanguageId())) {
+    public void update(UpdateSubTechnologyRequest updateSubTechnologyRequest) throws Exception {
+        if (!isNameEmpty(updateSubTechnologyRequest.getSubTechnologyName()) && 
+        !isNameRepeat(updateSubTechnologyRequest.getSubTechnologyName()) && 
+        isExistSubTechnologyId(updateSubTechnologyRequest.getSubTechnologyId()) && 
+        isExistProgrammingLanguageId(updateSubTechnologyRequest.getProgrammingLanguageId())) {
             SubTechnology subTechnology = new SubTechnology();
-            subTechnology.setId(subTechnologyRequestWithoutProgrammingLanguageName.getSubTechnologyId());
-            subTechnology.setName(subTechnologyRequestWithoutProgrammingLanguageName.getSubTechnologyName());
+            subTechnology.setId(updateSubTechnologyRequest.getSubTechnologyId());
+            subTechnology.setName(updateSubTechnologyRequest.getSubTechnologyName());
             
             ProgrammingLanguage programmingLanguage 
-            = this.programmingLanguageRepository.getReferenceById(subTechnologyRequestWithoutProgrammingLanguageName.getProgrammingLanguageId());
+            = this.programmingLanguageRepository.getReferenceById(updateSubTechnologyRequest.getProgrammingLanguageId());
             subTechnology.setProgrammingLanguage(programmingLanguage);
 
             this.subTechnologyRepository.save(subTechnology);

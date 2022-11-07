@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
-import Kodlama.io.Devs.business.requests.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.business.requests.programmingLanguage.CreateProgrammingLanguageRequest;
 import Kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
 import Kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;

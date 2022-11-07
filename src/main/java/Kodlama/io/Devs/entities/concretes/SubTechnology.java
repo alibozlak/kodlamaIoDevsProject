@@ -31,6 +31,6 @@ public class SubTechnology {
     private String name;
 
     @ManyToOne()
-    @JoinColumn(name = "programmingLanguage_id")
+    @JoinColumn(name = "programmingLanguageId")
     private ProgrammingLanguage programmingLanguage;
 }

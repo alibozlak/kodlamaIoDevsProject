@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Kodlama.io.Devs.business.abstracts.SubTechologyService;
-import Kodlama.io.Devs.business.requests.CreateSubTechnologyRequest;
-import Kodlama.io.Devs.business.requests.CreateSubTechnologyRequestWithoutProgrammingLanguageName;
+import Kodlama.io.Devs.business.requests.subTechnology.CreateSubTechnologyRequest;
+import Kodlama.io.Devs.business.requests.subTechnology.UpdateSubTechnologyRequest;
 import Kodlama.io.Devs.business.responses.GetAllSubTechnologyResponse;
 
 @RestController
@@ -37,8 +37,8 @@ public class SubTechnologiesController {
     }
 
     @PutMapping
-    public void update(@RequestBody CreateSubTechnologyRequestWithoutProgrammingLanguageName subTechnologyRequestWithoutProgrammingLanguageName) throws Exception {
-        this.subTechologyService.update(subTechnologyRequestWithoutProgrammingLanguageName);
+    public void update(@RequestBody UpdateSubTechnologyRequest updateSubTechnologyRequest) throws Exception {
+        this.subTechologyService.update(updateSubTechnologyRequest);
     }
 
     @GetMapping("/getall")
