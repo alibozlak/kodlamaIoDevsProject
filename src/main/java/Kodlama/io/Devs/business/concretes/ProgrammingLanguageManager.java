@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
 import Kodlama.io.Devs.business.requests.programmingLanguage.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.business.requests.programmingLanguage.UpdateProgrammingLanguageRequest;
 import Kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
 import Kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;
@@ -58,13 +59,18 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     public void add(CreateProgrammingLanguageRequest programmingLanguageRequest) throws Exception {
         ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
         programmingLanguage.setName(programmingLanguageRequest.getName());
+
         if (this.isValid(programmingLanguage)) {
             this.programmingLanguageRepository.save(programmingLanguage);
         }
     }
 
     @Override
-    public void update(ProgrammingLanguage programmingLanguage) throws Exception {
+    public void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) throws Exception {
+        ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
+        programmingLanguage.setId(updateProgrammingLanguageRequest.getId());
+        programmingLanguage.setName(updateProgrammingLanguageRequest.getName());
+        
         if (this.isValid(programmingLanguage) && this.isExistId(programmingLanguage.getId())) {
             this.programmingLanguageRepository.save(programmingLanguage);
         }

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
 import Kodlama.io.Devs.business.requests.programmingLanguage.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.business.requests.programmingLanguage.UpdateProgrammingLanguageRequest;
 import Kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
-import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;
 
 @RestController
 @RequestMapping("/api/programminglanguages")
@@ -36,14 +36,14 @@ public class ProgrammingLanguagesController {
         return this.programmingLanguageService.getById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public void add(@RequestBody CreateProgrammingLanguageRequest createProgrammingLanguageRequest) throws Exception {
         this.programmingLanguageService.add(createProgrammingLanguageRequest);
     }
 
-    @PutMapping("/update")
-    public void update(@RequestBody ProgrammingLanguage programmingLanguage) throws Exception {
-        this.programmingLanguageService.update(programmingLanguage);
+    @PutMapping
+    public void update(@RequestBody UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) throws Exception {
+        this.programmingLanguageService.update(updateProgrammingLanguageRequest);
     }
 
     @DeleteMapping("/delete/{id}")
