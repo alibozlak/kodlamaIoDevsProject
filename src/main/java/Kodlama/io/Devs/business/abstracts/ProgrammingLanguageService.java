@@ -12,4 +12,5 @@ public interface ProgrammingLanguageService {
     void delete(int programmingLanguageId) throws Exception;
     List<GetAllProgrammingLanguagesResponse> getAll();
     GetAllProgrammingLanguagesResponse getById(int programmingLanguageId) throws Exception;
+    boolean existsProgrammingLangageId(int programmingLanguageId);
 }

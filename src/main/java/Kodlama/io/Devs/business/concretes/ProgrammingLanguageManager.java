@@ -113,5 +113,13 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
         }
         return null;
     }
+
+    @Override
+    public boolean existsProgrammingLangageId(int programmingLanguageId) {
+        if (this.programmingLanguageRepository.existsById(programmingLanguageId)) {
+            return true;
+        }
+        return false;
+    }
     
 }
