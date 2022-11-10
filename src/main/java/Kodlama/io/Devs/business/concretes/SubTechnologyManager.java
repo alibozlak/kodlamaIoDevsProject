@@ -131,5 +131,24 @@ public class SubTechnologyManager implements SubTechologyService {
         }
         throw new Exception(subTechnologyId + " IDli bir alt teknoloji yok!");
     }
+
+    @Override
+    public GetAllSubTechnologyResponse getById(int subTechnologyId) {
+        SubTechnology subTechnology = this.subTechnologyRepository.getReferenceById(subTechnologyId);
+
+        GetAllSubTechnologyResponse getAllSubTechnologyResponse 
+        = new GetAllSubTechnologyResponse();
+        getAllSubTechnologyResponse.setId(subTechnologyId);
+        getAllSubTechnologyResponse.setName(subTechnology.getName());
+
+        GetAllProgrammingLanguagesResponse getAllProgrammingLanguagesResponse
+        = new GetAllProgrammingLanguagesResponse();
+        getAllProgrammingLanguagesResponse.setId(subTechnology.getProgrammingLanguage().getId());
+        getAllProgrammingLanguagesResponse.setName(subTechnology.getProgrammingLanguage().getName());
+
+        getAllSubTechnologyResponse.setGetAllProgrammingLanguagesResponse(getAllProgrammingLanguagesResponse);
+
+        return getAllSubTechnologyResponse;
+    }
     
 }

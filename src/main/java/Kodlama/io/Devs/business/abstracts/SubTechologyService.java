@@ -11,4 +11,5 @@ public interface SubTechologyService {
     void delete(int subTechnologyId) throws Exception;
     void update(UpdateSubTechnologyRequest updateSubTechnologyRequest) throws Exception;
     List<GetAllSubTechnologyResponse> getAll();
+    GetAllSubTechnologyResponse getById(int subTechnologyId);
 }

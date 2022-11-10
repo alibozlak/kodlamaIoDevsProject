@@ -46,4 +46,9 @@ public class SubTechnologiesController {
         return this.subTechologyService.getAll();
     }
 
+    @GetMapping("/getById/{subTechnologyId}")
+    public GetAllSubTechnologyResponse getById(@PathVariable int subTechnologyId){
+        return this.subTechologyService.getById(subTechnologyId);
+    }
+
 }
