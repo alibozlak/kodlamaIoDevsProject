@@ -3,6 +3,8 @@ package Kodlama.io.Devs.business.concretes;
 import java.util.ArrayList;
 import java.util.List;
 
+import Kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
@@ -16,16 +18,11 @@ import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;
 import Kodlama.io.Devs.entities.concretes.SubTechnology;
 
 @Service
+@AllArgsConstructor
 public class SubTechnologyManager implements SubTechologyService {
 
     private SubTechnologyRepository subTechnologyRepository;
     private ProgrammingLanguageService programmingLanguageService;
-
-    public SubTechnologyManager(SubTechnologyRepository subTechnologyRepository,
-            ProgrammingLanguageService programmingLanguageService) {
-        this.subTechnologyRepository = subTechnologyRepository;
-        this.programmingLanguageService = programmingLanguageService;
-    }
 
     @Override
     public void add(CreateSubTechnologyRequest subTechnologyRequest) throws Exception {
@@ -34,12 +31,12 @@ public class SubTechnologyManager implements SubTechologyService {
             SubTechnology subTechnology = new SubTechnology();
             subTechnology.setName(subTechnologyRequest.getName());
 
-            GetAllProgrammingLanguagesResponse getAllProgrammingLanguagesResponse 
+            GetByIdProgrammingLanguageResponse getByIdProgrammingLanguageResponse
             = this.programmingLanguageService.getById(subTechnologyRequest.getProgrammingLanguageId());
 
             ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
-            programmingLanguage.setId(getAllProgrammingLanguagesResponse.getId());
-            programmingLanguage.setName(getAllProgrammingLanguagesResponse.getName());
+            programmingLanguage.setId(getByIdProgrammingLanguageResponse.getId());
+            programmingLanguage.setName(getByIdProgrammingLanguageResponse.getName());
 
             subTechnology.setProgrammingLanguage(programmingLanguage);
 
@@ -64,12 +61,12 @@ public class SubTechnologyManager implements SubTechologyService {
             subTechnology.setId(updateSubTechnologyRequest.getSubTechnologyId());
             subTechnology.setName(updateSubTechnologyRequest.getSubTechnologyName());
             
-            GetAllProgrammingLanguagesResponse getAllProgrammingLanguagesResponse 
+            GetByIdProgrammingLanguageResponse getByIdProgrammingLanguageResponse
             = this.programmingLanguageService.getById(updateSubTechnologyRequest.getProgrammingLanguageId());
 
             ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
-            programmingLanguage.setId(getAllProgrammingLanguagesResponse.getId());
-            programmingLanguage.setName(getAllProgrammingLanguagesResponse.getName());
+            programmingLanguage.setId(getByIdProgrammingLanguageResponse.getId());
+            programmingLanguage.setName(getByIdProgrammingLanguageResponse.getName());
 
             subTechnology.setProgrammingLanguage(programmingLanguage);
 

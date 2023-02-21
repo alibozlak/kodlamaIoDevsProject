@@ -2,6 +2,8 @@ package Kodlama.io.Devs.webApi.controllers;
 
 import java.util.List;
 
+import Kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +20,10 @@ import Kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
 
 @RestController
 @RequestMapping("/api/programminglanguages")
+@AllArgsConstructor
 public class ProgrammingLanguagesController {
     
     private ProgrammingLanguageService programmingLanguageService;
-
-    public ProgrammingLanguagesController(ProgrammingLanguageService programmingLanguageService) {
-        this.programmingLanguageService = programmingLanguageService;
-    }
 
     @GetMapping("/getAll")
     public List<GetAllProgrammingLanguagesResponse> getAll() {
@@ -32,7 +31,7 @@ public class ProgrammingLanguagesController {
     }
 
     @GetMapping("/getbyid/{id}")
-    public GetAllProgrammingLanguagesResponse getById(@PathVariable int id) throws Exception {
+    public GetByIdProgrammingLanguageResponse getById(@PathVariable int id) throws Exception {
         return this.programmingLanguageService.getById(id);
     }
 
